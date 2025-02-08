@@ -114,5 +114,12 @@
 			"Deque<$1> $2 = new ArrayDeque<>();"
 		],
 		"description": "Creates a Stack using ArrayDeque (preferred over Stack class)"
+	},
+	"StringBuilder": {
+		"prefix": "stringbuilder",
+		"body": [
+			"StringBuilder $1 = new StringBuilder($2);"
+		],
+		"description": "Creates a Stringbuilder."
 	}
 }
