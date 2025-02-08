@@ -1,0 +1,118 @@
+{
+	"Spring Boot GET Controller": {
+		"prefix": "getcontroller",
+		"body": [
+			"@GetMapping(\"${1:/hello}\")",
+			"public ResponseEntity<String> ${2:getMethod}() {",
+			"    return ResponseEntity.ok(\"Success\");",
+			"}"
+		],
+		"description": "Basic Spring Boot GET controller method"
+	},
+	"Spring Boot POST Controller": {
+		"prefix": "postcontroller",
+		"body": [
+			"@PostMapping(\"${1:/post}\")",
+			"public ResponseEntity<String> ${2:postMethod}(@RequestBody String body) {",
+			"    return ResponseEntity.ok(body);",
+			"}"
+		],
+		"description": "Basic Spring Boot POST controller method"
+	},
+	"Spring Boot PUT Controller": {
+		"prefix": "putcontroller",
+		"body": [
+			"@PutMapping(\"${1:/put}\")",
+			"public ResponseEntity<String> ${2:putMethod}(@RequestBody String body) {",
+			"    return ResponseEntity.ok(body);",
+			"}"
+		],
+		"description": "Basic Spring Boot PUT controller method"
+	},
+	"Spring Boot DELETE Controller": {
+		"prefix": "deletecontroller",
+		"body": [
+			"@DeleteMapping(\"${1:/delete}/{id}\")",
+			"public ResponseEntity<String> ${2:deleteMethod}(@PathVariable Long id) {",
+			"    return ResponseEntity.ok(\"Deleted ID: \" + id);",
+			"}"
+		],
+		"description": "Basic Spring Boot DELETE controller method with PathVariable"
+	},
+	"Spring Boot PATCH Controller": {
+		"prefix": "patchcontroller",
+		"body": [
+			"@PatchMapping(\"${1:/patch}\")",
+			"public ResponseEntity<String> ${2:patchMethod}(@RequestBody String body) {",
+			"    return ResponseEntity.ok(body);",
+			"}"
+		],
+		"description": "Basic Spring Boot PATCH controller method"
+	},
+	"Spring Boot Service Class": {
+		"prefix": "serviceclass",
+		"body": [
+			"@Service",
+			"@AllArgsConstructor",
+			"public class ${1:SomeService} {",
+			"    private final ${2:SomeRepository} ${3:someRepository};",
+			"",
+			"    public ${4:String} ${5:someMethod}(${6:Long id}) {",
+			"        return ${3:someRepository}.findById(id).orElse(\"Not Found\");",
+			"    }",
+			"}"
+		],
+		"description": "Spring Boot Service class with @AllArgsConstructor"
+	},
+	"Spring Boot JDBC Repository": {
+		"prefix": "jdbcrepository",
+		"body": [
+			"@Repository",
+			"@AllArgsConstructor",
+			"public class ${1:SomeRepository} {",
+			"  private final JdbcTemplate jdbcTemplate;",
+			"",
+			"  public List<${2:SomeEntity}> findAll() {",
+			"    return jdbcTemplate.query(\"SELECT * FROM ${3:table}\",",
+			"      (rs, rowNum) -> new ${2:SomeEntity}(rs.getLong(\"id\"), rs.getString(\"name\")));",
+			"  }",
+			"}"
+		],
+		"description": "Spring Boot JDBC Repository using JdbcTemplate"
+	},
+	"List": {
+		"prefix": "list",
+		"body": [
+			"List<$1> $2 = new ArrayList<>();"
+		],
+		"description": "Creates a List using ArrayList implementation"
+	},
+	"Set": {
+		"prefix": "set",
+		"body": [
+			"Set<$1> $2 = new HashSet<>();"
+		],
+		"description": "Creates a Set using HashSet implementation"
+	},
+	"Map": {
+		"prefix": "map",
+		"body": [
+			"Map<$1, $2> $3 = new HashMap<>();"
+		],
+		"description": "Creates a Map using HashMap implementation"
+	},
+	"Queue": {
+		"prefix": "queue",
+		"body": [
+			"Queue<$1> $2 = new LinkedList<>();"
+		],
+		"description": "Creates a Queue using LinkedList implementation"
+	},
+	"Stack": {
+		"prefix": "stack",
+		"body": [
+			"Deque<$1> $2 = new ArrayDeque<>();"
+		],
+		"description": "Creates a Stack using ArrayDeque (preferred over Stack class)"
+	}
+}
