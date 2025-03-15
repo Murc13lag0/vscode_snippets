@@ -1,1 +1,31 @@
 
+{
+  "DTO Snippet": {
+    "prefix": "dto",
+    "body": [
+      "use serde::Serialize;",
+      "use uuid::Uuid;",
+      "use sqlx::FromRow;",
+      "",
+      "#[derive(Serialize, FromRow)]",
+      "pub struct ${1:ProblemOverviewResponseDto} {",
+      "    pub id: Uuid,",
+      "    pub title: String,",
+      "    pub difficulty: String,",
+      "}"
+  ],
+    "description": "Rust DTO struct with Serde and SQLx"
+  },
+
+  "Repo Function": {
+    "prefix": "repo_fn",
+    "body": [
+      "pub async fn ${1:function_name}(pool: &PgPool) -> Result<Vec<${2:DtoType}>, sqlx::Error> {",
+      "    sqlx::query_as::<_, ${2:DtoType}>(\"SELECT ${3:fields} FROM ${4:table}\")",
+      "        .fetch_all(pool)",
+      "        .await",
+      "}"
+  ],
+    "description": "Template for a SQLx repository function"
+  }
+}

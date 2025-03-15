@@ -121,5 +121,27 @@
 			"StringBuilder $1 = new StringBuilder($2);"
 		],
 		"description": "Creates a Stringbuilder."
+	},
+"BufferedReader": {
+	"prefix": "bufferedReaderFile",
+	"body": [
+		"try (BufferedReader $1 = Files.newBufferedReader(Path.of(\"$2\"))) {",
+		"    $3",
+		"} catch (IOException e) {",
+		"    e.printStackTrace();",
+		"}"
+	],
+	"description": "Try-with-resources for BufferedReader using modern NIO API."
+},
+"BufferedWriter": {
+	"prefix": "bufferedWriterFile",
+	"body": [
+		"try (BufferedWriter $1 = Files.newBufferedWriter(Path.of(\"$2\"))) {",
+		"    $3",
+		"} catch (IOException e) {",
+		"    e.printStackTrace();",
+		"}"
+	],
+	"description": "Try-with-resources for BufferedWriter using modern NIO API."
 	}
 }
